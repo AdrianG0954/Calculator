@@ -79,7 +79,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(210, 200), wxS
 	equals->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &cMain::equals_btn, this);
 
 	//EXTRA OPERATION BUTTONS
-	pi = new wxButton(this, 104,"π", wxPoint(35, 90), wxSize(60, 60));
+	pi = new wxButton(this, 104,L"\u03C0", wxPoint(35, 90), wxSize(60, 60));
 	pi->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &cMain::pie, this);
 
 	sin = new wxButton(this, 105, "Sin", wxPoint(35, 155), wxSize(60, 60));
@@ -88,10 +88,10 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(210, 200), wxS
 	tan = new wxButton(this, 106, "Tan", wxPoint(35, 220), wxSize(60, 60));
 	tan->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &cMain::tan_Button, this);
 
-	less_Than = new wxButton(this, 107, "≤", wxPoint(35, 285), wxSize(60, 60));
+	less_Than = new wxButton(this, 107, L"\u2264", wxPoint(35, 285), wxSize(60, 60));
 	less_Than->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &cMain::less_Than_btn, this);
 
-	SquareRoot = new wxButton(this, 109, "√", wxPoint(100, 90), wxSize(60, 60));
+	SquareRoot = new wxButton(this, 109, L"\u221a", wxPoint(100, 90), wxSize(60, 60));
 	SquareRoot->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &cMain::squareRoot_btn, this);
 
 	cos = new wxButton(this, 110, "Cos", wxPoint(100, 155), wxSize(60, 60));
@@ -100,7 +100,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(210, 200), wxS
 	exponent = new wxButton(this, 112, "x²", wxPoint(100, 220), wxSize(60, 60));
 	exponent->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &cMain::exponent_btn, this);
 
-	greater_Than = new wxButton(this, 112, "≥", wxPoint(100, 285), wxSize(60, 60));
+	greater_Than = new wxButton(this, 112, L"\u2265", wxPoint(100, 285), wxSize(60, 60));
 	greater_Than->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &cMain::greater_Than_btn, this);
 
 	per1 = new wxButton(this, 112, "(", wxPoint(165, 90), wxSize(60, 60));
@@ -231,17 +231,17 @@ void cMain::cos_Button(wxCommandEvent& evt) {
 
 
 void cMain::less_Than_btn(wxCommandEvent& evt) {
-	Calc->AppendText("≤");
+	Calc->AppendText(L"\u2264");
 }
 
 
 void cMain::greater_Than_btn(wxCommandEvent& evt) {
-	Calc->AppendText("≥");
+	Calc->AppendText(L"\u2265");
 }
 
 
 void cMain::squareRoot_btn(wxCommandEvent& evt) {
-	Calc->AppendText("√");
+	Calc->AppendText(L"\u221a");
 }
 
 

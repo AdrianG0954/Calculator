@@ -21,7 +21,7 @@
     <ClInclude Include="cMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SplitButton.h">
+    <ClInclude Include="buttonFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="cMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SplitButton.cpp">
+    <ClCompile Include="buttonFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
