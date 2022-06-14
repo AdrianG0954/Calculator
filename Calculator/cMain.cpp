@@ -5,10 +5,18 @@ wxEND_EVENT_TABLE()
 
 cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(210, 200), wxSize(470, 470))
 {
+	SetMinSize(wxSize(470, 470));
+	SetMaxSize(wxSize(470, 470));
+
 	//TEXT CTRL
-	Calc = new wxTextCtrl(this, 102,"", wxPoint(35, 10), wxSize(385, 40), wxTE_RIGHT);
+	Calc = new wxTextCtrl(this, 102,"", wxPoint(35, 10), wxSize(385, 40), wxTE_RIGHT | wxTE_BESTWRAP);
+	Calc->Enable(false);
 	wxFont calc_font(24, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_SLANT, wxFONTWEIGHT_NORMAL,false);
 	Calc->SetFont(calc_font);
+
+	//RESULT BOX
+	result = new wxListBox(this, 30092, wxPoint(270, 55), wxSize(150, 30));
+	result->Enable(false);
 
 	//DROP DOWN MENU
 	wxArrayString Choices;

@@ -10,6 +10,7 @@ public:
 public:
 	wxChoice* BinaryDropDown;
 	wxTextCtrl* Calc;
+	wxListBox* result;
 
 	//NUMBERS
 	wxButton* num_Zero;
