@@ -1,57 +1,16 @@
 #pragma once
 #include "wx/wx.h"
-#include "SplitButton.h"
+#include "buttonFactory.h"
 class cMain : public wxFrame
 {
 public:
 	cMain();
-	~cMain();
 
 public:
+	//DROP DOWN AND TEXT CONTROL
 	wxChoice* BinaryDropDown;
 	wxTextCtrl* Calc;
 	wxListBox* result;
-
-	//NUMBERS
-	wxButton* num_Zero;
-	wxButton* num_One;
-	wxButton* num_Two;
-	wxButton* num_Seven;
-	wxButton* num_Four;
-	wxButton* num_Eight;
-	wxButton* num_Five;
-	wxButton* num_Nine;
-	wxButton* num_Six;
-	wxButton* num_Three;
-	
-	//MAIN OPERATIONS
-	wxButton* neg;
-	wxButton* dot;
-	wxButton* mod;
-	wxButton* all_Clear;
-	wxButton* plus;
-	wxButton* minus;
-	wxButton* divide;
-	wxButton* equals;
-	wxButton* times;
-
-
-
-	//EXTRA OPERATIONS
-	wxButton* pi;
-	wxButton* sin;
-	wxButton* tan;
-	wxButton* cos;
-	wxButton* less_Than;
-	wxButton* greater_Than;
-	wxButton* SquareRoot;
-	wxButton* exponent;
-	wxButton* clear;
-	wxButton* per1;
-	wxButton* per2;
-
-
-
 
 	//NUMBER CLICK EVENTS
 	void num_Zero_btn(wxCommandEvent& evt);
