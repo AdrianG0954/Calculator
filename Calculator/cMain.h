@@ -1,16 +1,38 @@
 #pragma once
 #include "wx/wx.h"
 #include "buttonFactory.h"
+#include "Processor.h"
+#include <iomanip>
+#include <sstream>
 class cMain : public wxFrame
 {
 public:
 	cMain();
 
 public:
+	double op1 = 0;
+	double op2 = 0;
+
+	double res = 0;
+
+	int DecimalCounter = 0;
+
+	bool isDecimal = false;
+
+	bool AdditionFlag = false;
+	bool MultiplyFlag = false;
+	bool DivisionFlag = false;
+	bool SubtractionFlag = false;
+	bool ModularFlag = false;
+
+	bool isReset = false;
+
 	//DROP DOWN AND TEXT CONTROL
 	wxChoice* BinaryDropDown;
 	wxTextCtrl* Calc;
 	wxListBox* result;
+
+#pragma region click functions
 
 	//NUMBER CLICK EVENTS
 	void num_Zero_btn(wxCommandEvent& evt);
@@ -48,9 +70,14 @@ public:
 	void single_clear (wxCommandEvent& evt);
 	void per1_Click(wxCommandEvent& evt);
 	void per2_Click(wxCommandEvent& evt);
+#pragma endregion
 
+	void ResetNumber();
+	void ResetFlags();
+
+	double StringToDouble(wxString str);
+	wxString DoubleToString(double d);
 	
-
 	wxDECLARE_EVENT_TABLE();
 
 };
