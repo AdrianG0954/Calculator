@@ -207,11 +207,13 @@ void cMain::greater_Than_btn(wxCommandEvent& evt) {
 }
 
 void cMain::squareRoot_btn(wxCommandEvent& evt) {
-	Calc->AppendText(L"\u221a");
+	Processor* processor = Processor::GetInstance();
+	processor->OnsquareRoot(evt, this);
 }
 
 void cMain::exponent_btn(wxCommandEvent& evt) {
-	Calc->AppendText("x²");
+	Processor* processor = Processor::GetInstance();
+	processor->OnExponent(evt, this);
 }
 
 void cMain::single_clear(wxCommandEvent& evt) {
@@ -223,6 +225,46 @@ void cMain::per1_Click(wxCommandEvent& evt) {
 }
 
 void cMain::per2_Click(wxCommandEvent& evt) {
-	Calc->AppendText(")");
+	Processor* processor = Processor::GetInstance();
+	processor->GetHexadecimal(evt, this);
+}
+#pragma endregion
+
+#pragma region Extra stuff
+
+void cMain::ResetNumber()
+{
+	isDecimal = false;
+	isReset = true;
+	Calc->Clear();
+	DecimalCounter = 0;
+}
+
+void cMain::ResetFlags()
+{
+	AdditionFlag = false;
+	DivisionFlag = false;
+	MultiplyFlag = false;
+	ModularFlag = false;
+	ExponentFlag = false;
+	SubtractionFlag = false;
+	isDecimal = false;
+	isReset = false;
+}
+
+double cMain::StringToDouble(wxString str)
+{
+	return stod(string(str));
+}
+
+wxString cMain::DoubleToString(double d)
+{
+	stringstream buffer;
+	streambuf* old = std::cout.rdbuf(buffer.rdbuf());
+	cout << fixed << setprecision(15) << d << std::endl;
+	string text = buffer.str();
+
+	wxString txt = text;
+	return txt;
 }
 #pragma endregion
