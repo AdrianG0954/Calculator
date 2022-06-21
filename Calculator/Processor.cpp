@@ -184,8 +184,6 @@ void Processor::OnOperationPlus(wxCommandEvent& evt, cMain* this2) {
 
 void Processor::onOperationEquals(wxCommandEvent& evt, cMain* this2) {
 	this->cmain = this2;
-	int one = 0;
-	int two = 0;
 
 	if (cmain->Calc->GetLineLength(1) == 0)
 		return;
@@ -227,8 +225,8 @@ void Processor::onOperationEquals(wxCommandEvent& evt, cMain* this2) {
 		cmain->ResetNumber();
 	}
 	else if (cmain->ModularFlag) {
-		two = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = one % two;
+		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
+		cmain->res = (int)cmain->op1 % (int)cmain->op2;
 		cmain->result->AppendAndEnsureVisible(" % " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
 		cmain->ResetFlags();
@@ -274,23 +272,21 @@ void Processor::plusToMinus(wxCommandEvent& evt, cMain* this2) {
 
 void Processor::modular(wxCommandEvent& evt, cMain* this2) {
 	this->cmain = this2;
-	int one = 0;
-	int two = 0;
 	if (cmain->Calc->GetLineLength(1) == 0)
 		return;
 
 	if (!cmain->ModularFlag)
 	{
-		one = cmain->StringToDouble(cmain->Calc->GetValue());
+		cmain->op1 = cmain->StringToDouble(cmain->Calc->GetValue());
 		cmain->ModularFlag = true;
 		cmain->result->AppendAndEnsureVisible(" % " + cmain->Calc->GetValue());
 		cmain->ResetNumber();
 	}
 	else if (cmain->ModularFlag)
 	{
-		two = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = one % two;
-		one = cmain->res;
+		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
+		cmain->res = (int)cmain->op1 % (int)cmain->op2;
+		cmain->op1 = cmain->res;
 		cmain->result->AppendAndEnsureVisible(" % " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
 		cmain->ResetNumber();
