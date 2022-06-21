@@ -46,6 +46,10 @@ public:
 
 	void OnExponent(wxCommandEvent& evt, cMain* this2);
 
+	void onSingleClear(wxCommandEvent& evt, cMain* this2);
+
+	void allClear(wxCommandEvent& evt, cMain* this2);
+
 #pragma endregion
 
 #pragma region Binary dec and hex

@@ -341,4 +341,28 @@ void Processor::OnExponent(wxCommandEvent& evt, cMain* this2) {
 	evt.Skip();
 }
 
+void Processor::allClear(wxCommandEvent& evt, cMain* this2) {
+	this->cmain = this2;
+	cmain->ResetFlags();
+	cmain->ResetNumber();
+	evt.Skip();
+}
+
+void Processor::onSingleClear(wxCommandEvent& evt, cMain* this2) {
+	this->cmain = this2;
+
+	if (cmain->Calc->GetRange(cmain->Calc->GetLastPosition() - 1, cmain->Calc->GetLastPosition()) == '.')
+		cmain->isDecimal = false;
+
+	if (cmain->Calc->GetLineLength(1) == 0)
+		cmain->ResetNumber();
+	else
+		cmain->Calc->Remove(cmain->Calc->GetLastPosition() - 1, cmain->Calc->GetLastPosition());
+
+	if (cmain->isDecimal && cmain->DecimalCounter < 15)
+		--cmain->DecimalCounter;
+
+	evt.Skip();
+}
+
 #pragma endregion

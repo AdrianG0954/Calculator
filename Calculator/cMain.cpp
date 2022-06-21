@@ -17,15 +17,8 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(210, 200), wxS
 	Calc->SetFont(calc_font);
 
 	//RESULT BOX
-	result = new wxListBox(this, 30092, wxPoint(270, 55), wxSize(150, 30));
+	result = new wxListBox(this, 30092, wxPoint(35, 55), wxSize(150, 30));
 	result->Enable(false);
-
-	//DROP DOWN MENU
-	wxArrayString Choices;
-	Choices.Add("Hexidecimal");
-	Choices.Add("Binary");
-	Choices.Add("Decimal");
-	BinaryDropDown = new wxChoice(this, 103, wxPoint(35, 60), wxSize(100, 70), Choices, 0, wxDefaultValidator);
 
 
 	//Num buttons
@@ -96,52 +89,112 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(210, 200), wxS
 #pragma region number click events
 
 void cMain::num_Zero_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("0");
+	evt.Skip();
 }
 
 
 void cMain::num_One_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("1");
+	evt.Skip();
 }
 
 
 void cMain::num_Two_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("2");
+	evt.Skip();
 }
 
 
 void cMain::num_Three_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("3");
+	evt.Skip();
 }
 
 
 void cMain::num_Four_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("4");
+	evt.Skip();
 }
 
 
 void cMain::num_Five_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("5");
+	evt.Skip();
 }
 
 
 void cMain::num_Six_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("6");
+	evt.Skip();
 }
 
 
 void cMain::num_Seven_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("7");
+	evt.Skip();
 }
 
 
 void cMain::num_Eight_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("8");
+	evt.Skip();
 }
 
 
 void cMain::num_Nine_btn(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("9");
+	evt.Skip();
 }
 
 #pragma endregion
@@ -149,32 +202,41 @@ void cMain::num_Nine_btn(wxCommandEvent& evt) {
 #pragma region Main Operations
 
 void cMain::toNegative(wxCommandEvent& evt) {
-	Calc->AppendText("-");
+	Processor* processor = Processor::GetInstance();
+	processor->plusToMinus(evt, this);
 }
 void cMain::toDecimal(wxCommandEvent& evt) {
-	Calc->AppendText(".");
+	Processor* processor = Processor::GetInstance();
+	processor->onDecimal(evt, this);
 }
 void cMain::all_Clear_btn(wxCommandEvent& evt) {
-	Calc->Clear();
+	Processor* processor = Processor::GetInstance();
+	processor->allClear(evt, this);
 }
 void cMain::plus_btn(wxCommandEvent& evt) {
-	Calc->AppendText("+");
+	Processor* processor = Processor::GetInstance();
+	processor->OnOperationPlus(evt, this);
 }
 void cMain::minus_btn(wxCommandEvent& evt) {
-	Calc->AppendText("-");
+	Processor* processor = Processor::GetInstance();
+	processor->OnOperationMinus(evt, this);
 }
 void cMain::divide_btn(wxCommandEvent& evt) {
-	Calc->AppendText("/");
+	Processor* processor = Processor::GetInstance();
+	processor->onOperationDiv(evt, this);
 }
 void cMain::equals_btn(wxCommandEvent& evt) {
-	Calc->AppendText("=");
+	Processor* processor = Processor::GetInstance();
+	processor->onOperationEquals(evt, this);
 }
 void cMain::multiplication(wxCommandEvent& evt) {
-	Calc->AppendText("x");
+	Processor* processor = Processor::GetInstance();
+	processor->onOperationTimes(evt, this);
 }
 
 void cMain::modular(wxCommandEvent& evt) {
-	Calc->AppendText("%");
+	Processor* processor = Processor::GetInstance();
+	processor->modular(evt, this);
 }
 
 
@@ -183,7 +245,13 @@ void cMain::modular(wxCommandEvent& evt) {
 #pragma region Extra Operations
 
 void cMain::pie(wxCommandEvent& evt) {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	Calc->AppendText("3.14");
+	evt.Skip();
 }
 
 void cMain::sin_Button(wxCommandEvent& evt) {
@@ -217,11 +285,13 @@ void cMain::exponent_btn(wxCommandEvent& evt) {
 }
 
 void cMain::single_clear(wxCommandEvent& evt) {
-	Calc->AppendText("C");
+	Processor* processor = Processor::GetInstance();
+	processor->onSingleClear(evt, this);
 }
 
 void cMain::per1_Click(wxCommandEvent& evt) {
-	Calc->AppendText("(");
+	Processor* processor = Processor::GetInstance();
+	processor->GetBinary(evt, this);
 }
 
 void cMain::per2_Click(wxCommandEvent& evt) {
@@ -254,15 +324,15 @@ void cMain::ResetFlags()
 
 double cMain::StringToDouble(wxString str)
 {
-	return stod(string(str));
+	return std::stod(std::string(str));
 }
 
 wxString cMain::DoubleToString(double d)
 {
-	stringstream buffer;
-	streambuf* old = std::cout.rdbuf(buffer.rdbuf());
-	cout << fixed << setprecision(15) << d << std::endl;
-	string text = buffer.str();
+	std::stringstream buffer;
+	std::streambuf* old = std::cout.rdbuf(buffer.rdbuf());
+	std::cout << std::fixed << std::setprecision(15) << d << std::endl;
+	std::string text = buffer.str();
 
 	wxString txt = text;
 	return txt;

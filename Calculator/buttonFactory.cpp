@@ -283,7 +283,7 @@ wxButton* buttonFactory::get_GreaterThan(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Per1(wxWindow* parent, cMain* evt) {
-	per1 = new wxButton(parent, 112, "(",
+	per1 = new wxButton(parent, 112, "Binary",
 		wxPoint(165, 90), wxSize(60, 60));
 
 	per1->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -293,7 +293,7 @@ wxButton* buttonFactory::get_Per1(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Per2(wxWindow* parent, cMain* evt) {
-	per2 = new wxButton(parent, 112, "Hexidecimal",
+	per2 = new wxButton(parent, 112, "Hex",
 		wxPoint(230, 90), wxSize(60, 60));
 
 	per2->Bind(wxEVT_COMMAND_BUTTON_CLICKED,

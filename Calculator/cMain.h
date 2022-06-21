@@ -29,7 +29,6 @@ public:
 	bool isReset = false;
 
 	//DROP DOWN AND TEXT CONTROL
-	wxChoice* BinaryDropDown;
 	wxTextCtrl* Calc;
 	wxListBox* result;
 
@@ -80,6 +79,5 @@ public:
 	wxString DoubleToString(double d);
 	
 	wxDECLARE_EVENT_TABLE();
-
 };
 
