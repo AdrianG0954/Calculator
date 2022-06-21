@@ -20,70 +20,71 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(210, 200), wxS
 	result = new wxListBox(this, 30092, wxPoint(35, 55), wxSize(150, 30));
 	result->Enable(false);
 
-
+#pragma region buttons
 	//Num buttons
-	wxButton* num_Zero = factory.get_Zero(this,this);
+	wxButton* num_Zero = factory.get_Zero(this, this);
 
-	wxButton* num_One = factory.get_One(this,this);
+	wxButton* num_One = factory.get_One(this, this);
 
-	wxButton* num_Two =  factory.get_Two(this,this);
+	wxButton* num_Two = factory.get_Two(this, this);
 
-	wxButton* num_Three = factory.get_Three(this,this);
+	wxButton* num_Three = factory.get_Three(this, this);
 
-	wxButton* num_Four = factory.get_Four(this,this);
+	wxButton* num_Four = factory.get_Four(this, this);
 
-	wxButton* num_Five = factory.get_Five(this,this);
+	wxButton* num_Five = factory.get_Five(this, this);
 
-	wxButton* num_Six = factory.get_Six(this,this);
+	wxButton* num_Six = factory.get_Six(this, this);
 
-	wxButton* num_Seven = factory.get_Seven(this,this);
+	wxButton* num_Seven = factory.get_Seven(this, this);
 
-	wxButton* num_Eight = factory.get_Eight(this,this);
+	wxButton* num_Eight = factory.get_Eight(this, this);
 
-	wxButton* num_Nine =  factory.get_Nine(this,this);
+	wxButton* num_Nine = factory.get_Nine(this, this);
 
 	//MAIN OPERATION BUTTONS
-	wxButton* neg = factory.get_toNeg(this,this);
+	wxButton* neg = factory.get_toNeg(this, this);
 
-	wxButton* dot = factory.get_Dot(this,this);
+	wxButton* dot = factory.get_Dot(this, this);
 
-	wxButton* mod = factory.get_Mod(this,this);
+	wxButton* mod = factory.get_Mod(this, this);
 
-	wxButton* all_Clear = factory.get_AC(this,this);
+	wxButton* all_Clear = factory.get_AC(this, this);
 
-	wxButton* plus = factory.get_Plus(this,this);
+	wxButton* plus = factory.get_Plus(this, this);
 
-	wxButton* minus = factory.get_Minus(this,this);
+	wxButton* minus = factory.get_Minus(this, this);
 
-	wxButton* divide = factory.get_Div(this,this);
+	wxButton* divide = factory.get_Div(this, this);
 
-	wxButton* equals = factory.get_Equals(this,this);
+	wxButton* equals = factory.get_Equals(this, this);
 
-	wxButton* times = factory.get_Times(this,this);
+	wxButton* times = factory.get_Times(this, this);
 
 	//EXTRA OPERATION BUTTONS
-	wxButton* pi = factory.get_Pi(this,this);
+	wxButton* pi = factory.get_Pi(this, this);
 
-	wxButton* sin = factory.get_Sin(this,this);
+	wxButton* sin = factory.get_Sin(this, this);
 
-	wxButton* tan = factory.get_Tan(this,this);
+	wxButton* tan = factory.get_Tan(this, this);
 
-	wxButton* cos = factory.get_Cos(this,this);
+	wxButton* cos = factory.get_Cos(this, this);
 
 	wxButton* less_Than = factory.get_LessThan(this, this);
 
-	wxButton* greater_Than = factory.get_GreaterThan(this,this);
+	wxButton* greater_Than = factory.get_GreaterThan(this, this);
 
-	wxButton* SquareRoot = factory.get_Squared(this,this);
+	wxButton* SquareRoot = factory.get_Squared(this, this);
 
-	wxButton* exponent = factory.get_Exponent(this,this);
+	wxButton* exponent = factory.get_Exponent(this, this);
 
-	wxButton* clear = factory.get_Per1(this,this);
+	wxButton* clear = factory.get_Per1(this, this);
 
-	wxButton* per1 = factory.get_Per2(this,this);
+	wxButton* per1 = factory.get_Per2(this, this);
 
-	wxButton* per2 = factory.get_Clear(this,this);
-	
+	wxButton* per2 = factory.get_Clear(this, this);
+#pragma endregion
+
 }
 
 #pragma region number click events

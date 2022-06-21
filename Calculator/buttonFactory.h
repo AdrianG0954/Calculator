@@ -8,6 +8,7 @@ class cMain;
 class buttonFactory
 {
 public:
+#pragma region buttons
 	//NUMBERS
 	wxButton* num_Zero;
 	wxButton* num_One;
@@ -43,6 +44,10 @@ public:
 	wxButton* clear;
 	wxButton* per1;
 	wxButton* per2;
+
+#pragma endregion
+
+	
 public:
 #pragma region num functions
 	wxButton* get_Zero(wxWindow* parent, cMain* evt);
