@@ -1,14 +1,19 @@
 #pragma once
 #include "buttonFactory.h"
 #include <string>
+#include <vector>
+#include <queue>
 #include "wx/wx.h"
 #include "cMain.h"
+#include "IBaseCommands.h"
+
+using namespace std;
 
 
 class cMain;
 
-class Processor
-{
+class Processor {
+
 public:
 	cMain* cmain;
 private:
@@ -58,11 +63,26 @@ public:
 
 	void GetHexadecimal(wxCommandEvent& evt, cMain* this2);
 
-	void GetDecimal(wxCommandEvent& evt, cMain* this2);
-
 	void OnsquareRoot(wxCommandEvent& evt, cMain* this2);
 
+	void GetDecimal(wxCommandEvent& evt, cMain* this2);
+
 #pragma endregion
+
+#pragma region Unit test Functions
+	static int TestOnOperationPlus(int op1,int op2);
+
+	static int TestOnOperationMinus(int op1, int op2);
+
+	static int TestonOperationTimes(int op1, int op2);
+
+	static int TestonOperationDiv(int op1, int op2);
+
+	static string TestGetBinary(int op1);
+
+	static string TestGetHexadecimal(int op1);
+#pragma endregion
+
 };
 
 

@@ -1,6 +1,7 @@
 #include "Processor.h"
-using namespace std;
+#include <bitset>
 
+using namespace std;
 Processor* Processor::_processor = nullptr;
 
 Processor* Processor::GetInstance() {
@@ -12,43 +13,26 @@ Processor* Processor::GetInstance() {
 
 void Processor::GetDecimal(wxCommandEvent& evt, cMain* this2) {
 
+	this->cmain = this2;
+
 	cmain->result->AppendAndEnsureVisible(cmain->Calc->GetValue());
+
+	evt.Skip();
 }
 
 void Processor::GetHexadecimal(wxCommandEvent& evt, cMain* this2) {
 	this->cmain = this2;
-	
+
 	if (cmain->Calc->GetLineLength(1) == 0)
 		return;
 
-	wxString result2 = "0x";
 	int number = cmain->StringToDouble(cmain->Calc->GetValue());
-	while (number > 0) {
-		int mod = number % 16;
-		if (mod < 10) {
-			result2 += std::to_string(mod);
-		}
-		else if (mod == 10) {
-			result2 += "A";
-		}
-		else if (mod == 11) {
-			result2 += "B";
-		}
-		else if (mod == 12) {
-			result2 += "C";
-		}
-		else if (mod == 13) {
-			result2 += "D";
-		}
-		else if (mod == 14) {
-			result2 += "E";
-		}
-		else if (mod == 15) {
-			result2 += "F";
-		}
-		number /= 16;
-	}
-	cmain->result->AppendAndEnsureVisible(result2);
+
+	std::ostringstream ss;
+	ss << "0x" << std::hex << number;
+	std::string result = ss.str();
+
+	cmain->result->AppendAndEnsureVisible(result);
 
 	evt.Skip();
 }
@@ -59,26 +43,23 @@ void Processor::GetBinary(wxCommandEvent& evt, cMain* this2) {
 	if (cmain->Calc->GetLineLength(1) == 0)
 		return;
 
-	wxString result2 = "";
 	int number = cmain->StringToDouble(cmain->Calc->GetValue());
-	for (int i = 0; i < 32; ++i) {
-		if (number % 2 == 0) {
-			result2 += "0";
-		}
+	string str;
+	while (number) {
+		if (number & 1)
+			str += '1';
 		else
-		{
-			result2 += "1";
-		}
-		number /= 2;
+			str += '0';
+		number >>= 1;
 	}
-	cmain->result->AppendAndEnsureVisible(result2);
+	std::reverse(str.begin(), str.end());
+
+	cmain->result->AppendAndEnsureVisible(str);
 
 	evt.Skip();
 }
 
 #pragma region Operations
-
-
 
 void Processor::onOperationDiv(wxCommandEvent& evt, cMain* this2) {
 	this->cmain = this2;
@@ -234,7 +215,7 @@ void Processor::onOperationEquals(wxCommandEvent& evt, cMain* this2) {
 	}
 	else if (cmain->ExponentFlag) {
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = pow(cmain->op1,cmain->op2);
+		cmain->res = pow(cmain->op1, cmain->op2);
 		cmain->result->AppendAndEnsureVisible(" ^ " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
 		cmain->ResetFlags();
@@ -301,13 +282,13 @@ void Processor::OnsquareRoot(wxCommandEvent& evt, cMain* this2) {
 	if (cmain->Calc->GetLineLength(1) == 0)
 		return;
 
-		cmain->op1 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->result->AppendAndEnsureVisible(L"\u221a" + cmain->Calc->GetValue());
-		cmain->res = sqrt(cmain->op1);
-		cmain->op1 = cmain->res;
-		cmain->result->AppendAndEnsureVisible(L"\u221a" + cmain->Calc->GetValue());
-		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
-		cmain->ResetNumber();
+	cmain->op1 = cmain->StringToDouble(cmain->Calc->GetValue());
+	cmain->result->AppendAndEnsureVisible(L"\u221a" + cmain->Calc->GetValue());
+	cmain->res = sqrt(cmain->op1);
+	cmain->op1 = cmain->res;
+	cmain->result->AppendAndEnsureVisible(L"\u221a" + cmain->Calc->GetValue());
+	cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
+	cmain->ResetNumber();
 
 	evt.Skip();
 }
@@ -328,7 +309,7 @@ void Processor::OnExponent(wxCommandEvent& evt, cMain* this2) {
 	else if (cmain->AdditionFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = pow(cmain->op1,cmain->op2);
+		cmain->res = pow(cmain->op1, cmain->op2);
 		cmain->op1 = cmain->res;
 		cmain->result->AppendAndEnsureVisible(" ^ " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
@@ -361,4 +342,69 @@ void Processor::onSingleClear(wxCommandEvent& evt, cMain* this2) {
 	evt.Skip();
 }
 
+
+
+
 #pragma endregion
+
+#pragma region Unit Tests(Contain same code as regular functions)
+
+
+//the reason the code is so much shorter here is because in my
+// other ones I had to use the textctrl and the results box and etc
+// but here all I have to do is run and see if my math logic is 
+//Correct
+int Processor::TestOnOperationPlus(int op1, int op2) {
+	int res;
+
+	res = op1 + op2;
+
+	return res;
+}
+
+int Processor::TestOnOperationMinus(int op1, int op2) {
+	int res;
+
+	res = op1 - op2;
+
+	return res;
+}
+
+int Processor::TestonOperationTimes(int op1, int op2) {
+	int res;
+
+	res = op1 * op2;
+
+	return res;
+}
+
+int Processor::TestonOperationDiv(int op1, int op2) {
+	int res;
+
+	res = op1 / op2;
+
+	return res;
+}
+
+string Processor::TestGetBinary(int op1) {
+	string str;
+	while (op1) {
+		if (op1 & 1)
+			str += '1';
+		else 
+			str += '0';
+		op1 >>= 1; 
+	}
+	std::reverse(str.begin(), str.end());
+
+	return str;
+}
+
+string Processor::TestGetHexadecimal(int op1) {
+	std::ostringstream ss;
+	ss << "0x" << std::hex << op1;
+	std::string result = ss.str();
+
+	return result;
+}
+#pragma endregion 

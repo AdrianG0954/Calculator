@@ -6,7 +6,7 @@
 #pragma region Get 0-9 Buttons
 
 wxButton* buttonFactory::get_Zero(wxWindow* parent, cMain* evt) {
-	num_Zero = new wxButton(parent, wxID_ANY, "0", 
+	num_Zero = new wxButton(parent, 0, "0", 
 		wxPoint(230, 350), wxSize(60, 60));
 
 	num_Zero->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -16,7 +16,7 @@ wxButton* buttonFactory::get_Zero(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_One(wxWindow* parent, cMain* evt) {
-	num_One = new wxButton(parent, 112, "1", wxPoint(165, 285),
+	num_One = new wxButton(parent, 1, "1", wxPoint(165, 285),
 		wxSize(60, 60));
 
 	num_One->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -26,7 +26,7 @@ wxButton* buttonFactory::get_One(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Two(wxWindow* parent, cMain* evt) {
-	num_Two = new wxButton(parent, 112, "2",
+	num_Two = new wxButton(parent, 2, "2",
 		wxPoint(230, 285), wxSize(60, 60));
 
 	num_Two->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -36,7 +36,7 @@ wxButton* buttonFactory::get_Two(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Three(wxWindow* parent, cMain* evt) {
-	num_Three = new wxButton(parent, 112, "3",
+	num_Three = new wxButton(parent, 3, "3",
 		wxPoint(295, 285), wxSize(60, 60));
 
 	num_Three->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -46,7 +46,7 @@ wxButton* buttonFactory::get_Three(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Four(wxWindow* parent, cMain* evt) {
-	num_Four = new wxButton(parent, 112, "4",
+	num_Four = new wxButton(parent, 4, "4",
 		wxPoint(165, 220), wxSize(60, 60));
 
 	num_Four->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -56,7 +56,7 @@ wxButton* buttonFactory::get_Four(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Five(wxWindow* parent, cMain* evt) {
-	num_Five = new wxButton(parent, 112, "5",
+	num_Five = new wxButton(parent, 5, "5",
 		wxPoint(230, 220), wxSize(60, 60));
 
 	num_Five->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -66,7 +66,7 @@ wxButton* buttonFactory::get_Five(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Six(wxWindow* parent, cMain* evt) {
-	num_Six = new wxButton(parent, 112, "6",
+	num_Six = new wxButton(parent, 6, "6",
 		wxPoint(295, 220), wxSize(60, 60));
 
 	num_Six->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -76,7 +76,7 @@ wxButton* buttonFactory::get_Six(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Seven(wxWindow* parent, cMain* evt) {
-	num_Seven = new wxButton(parent, 112, "7",
+	num_Seven = new wxButton(parent, 7, "7",
 		wxPoint(165, 155), wxSize(60, 60));
 
 	num_Seven->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -86,7 +86,7 @@ wxButton* buttonFactory::get_Seven(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Eight(wxWindow* parent, cMain* evt) {
-	num_Eight = new wxButton(parent, 112, "8",
+	num_Eight = new wxButton(parent, 8, "8",
 		wxPoint(230, 155), wxSize(60, 60));
 
 	num_Eight->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -96,7 +96,7 @@ wxButton* buttonFactory::get_Eight(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Nine(wxWindow* parent, cMain* evt) {
-	num_Nine = new wxButton(parent, 112, "9",
+	num_Nine = new wxButton(parent, 9, "9",
 		wxPoint(295, 155), wxSize(60, 60));
 
 	num_Nine->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -110,7 +110,7 @@ wxButton* buttonFactory::get_Nine(wxWindow* parent, cMain* evt) {
 #pragma region Main operation Buttons
 
 wxButton* buttonFactory::get_Dot(wxWindow* parent, cMain* evt) {
-	dot = new wxButton(parent, 112, "•",
+	dot = new wxButton(parent, 21, "•",
 		wxPoint(165, 350), wxSize(60, 60));
 
 	dot->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -120,7 +120,7 @@ wxButton* buttonFactory::get_Dot(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_toNeg(wxWindow* parent, cMain* evt) {
-	neg = new wxButton(parent, 108, "+/-",
+	neg = new wxButton(parent, 22, "+/-",
 		wxPoint(35, 350), wxSize(60, 60));
 
 	neg->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -130,7 +130,7 @@ wxButton* buttonFactory::get_toNeg(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Mod(wxWindow* parent, cMain* evt) {
-	mod = new wxButton(parent, 112, "%",
+	mod = new wxButton(parent, 23, "%",
 		wxPoint(100, 350), wxSize(60, 60));
 
 	mod->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -140,7 +140,7 @@ wxButton* buttonFactory::get_Mod(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_AC(wxWindow* parent,cMain* evt) {
-	all_Clear = new wxButton(parent, 112, "AC",
+	all_Clear = new wxButton(parent, 24, "AC",
 		wxPoint(360, 90), wxSize(60, 60));
 
 	all_Clear->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -150,7 +150,7 @@ wxButton* buttonFactory::get_AC(wxWindow* parent,cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Div(wxWindow* parent, cMain* evt) {
-	divide = new wxButton(parent, 112, "÷",
+	divide = new wxButton(parent, 25, "÷",
 		wxPoint(360, 155), wxSize(60, 60));
 
 	divide->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -160,7 +160,7 @@ wxButton* buttonFactory::get_Div(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Plus(wxWindow* parent, cMain* evt) {
-	plus = new wxButton(parent, 112, "+",
+	plus = new wxButton(parent, 26, "+",
 		wxPoint(360, 350), wxSize(60, 60));
 
 	plus->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -170,7 +170,7 @@ wxButton* buttonFactory::get_Plus(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Times(wxWindow* parent, cMain* evt) {
-	times = new wxButton(parent, 112, "x",
+	times = new wxButton(parent, 27, "x",
 		wxPoint(360, 220), wxSize(60, 60));
 
 	times->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -180,7 +180,7 @@ wxButton* buttonFactory::get_Times(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Minus(wxWindow* parent, cMain* evt) {
-	minus = new wxButton(parent, 112, "-",
+	minus = new wxButton(parent, 28, "-",
 		wxPoint(360, 285), wxSize(60, 60));
 
 	minus->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -190,7 +190,7 @@ wxButton* buttonFactory::get_Minus(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Equals(wxWindow* parent, cMain* evt) {
-	equals = new wxButton(parent, 112, "=",
+	equals = new wxButton(parent, 29, "=",
 		wxPoint(295, 350), wxSize(60, 60));
 
 	equals->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -203,7 +203,7 @@ wxButton* buttonFactory::get_Equals(wxWindow* parent, cMain* evt) {
 #pragma region Extra Operations
 
 wxButton* buttonFactory::get_Pi(wxWindow* parent, cMain* evt) {
-	pi = new wxButton(parent, 104, L"\u03C0",
+	pi = new wxButton(parent, 10, L"\u03C0",
 		wxPoint(35, 90), wxSize(60, 60));
 
 	pi->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -213,7 +213,7 @@ wxButton* buttonFactory::get_Pi(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Sin(wxWindow* parent, cMain* evt) {
-	sin = new wxButton(parent, 105, "Sin",
+	sin = new wxButton(parent, 11, "Sin",
 		wxPoint(35, 155), wxSize(60, 60));
 
 	sin->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -223,7 +223,7 @@ wxButton* buttonFactory::get_Sin(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Tan(wxWindow* parent, cMain* evt) {
-	tan = new wxButton(parent, 106, "Tan",
+	tan = new wxButton(parent, 12, "Tan",
 		wxPoint(35, 220), wxSize(60, 60));
 
 	tan->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -233,7 +233,7 @@ wxButton* buttonFactory::get_Tan(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_LessThan(wxWindow* parent, cMain* evt) {
-	less_Than = new wxButton(parent, 107, L"\u2264",
+	less_Than = new wxButton(parent, 13, L"\u2264",
 		wxPoint(35, 285), wxSize(60, 60));
 
 	less_Than->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -243,7 +243,7 @@ wxButton* buttonFactory::get_LessThan(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Squared(wxWindow* parent, cMain* evt) {
-	SquareRoot = new wxButton(parent, 109, L"\u221a",
+	SquareRoot = new wxButton(parent, 14, L"\u221a",
 		wxPoint(100, 90), wxSize(60, 60));
 
 	SquareRoot->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -253,7 +253,7 @@ wxButton* buttonFactory::get_Squared(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Cos(wxWindow* parent, cMain* evt) {
-	cos = new wxButton(parent, 110, "Cos",
+	cos = new wxButton(parent, 15, "Cos",
 		wxPoint(100, 155), wxSize(60, 60));
 
 	cos->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -263,7 +263,7 @@ wxButton* buttonFactory::get_Cos(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Exponent(wxWindow* parent, cMain* evt) {
-	exponent = new wxButton(parent, 112, "x²",
+	exponent = new wxButton(parent, 16, "x²",
 		wxPoint(100, 220), wxSize(60, 60));
 
 	exponent->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -273,7 +273,7 @@ wxButton* buttonFactory::get_Exponent(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_GreaterThan(wxWindow* parent, cMain* evt) {
-	greater_Than = new wxButton(parent, 112, L"\u2265",
+	greater_Than = new wxButton(parent, 17, L"\u2265",
 		wxPoint(100, 285), wxSize(60, 60));
 
 	greater_Than->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -283,7 +283,7 @@ wxButton* buttonFactory::get_GreaterThan(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Per1(wxWindow* parent, cMain* evt) {
-	per1 = new wxButton(parent, 112, "Binary",
+	per1 = new wxButton(parent, 18, "Binary",
 		wxPoint(165, 90), wxSize(60, 60));
 
 	per1->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -293,7 +293,7 @@ wxButton* buttonFactory::get_Per1(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Per2(wxWindow* parent, cMain* evt) {
-	per2 = new wxButton(parent, 112, "Hex",
+	per2 = new wxButton(parent, 19, "Hex",
 		wxPoint(230, 90), wxSize(60, 60));
 
 	per2->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -303,7 +303,7 @@ wxButton* buttonFactory::get_Per2(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Clear(wxWindow* parent, cMain* evt) {
-	clear = new wxButton(parent, 112, "C",
+	clear = new wxButton(parent, 20, "C",
 		wxPoint(295, 90), wxSize(60, 60));
 
 	clear->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -311,6 +311,7 @@ wxButton* buttonFactory::get_Clear(wxWindow* parent, cMain* evt) {
 
 	return clear;
 }
+
 
 
 

@@ -89,6 +89,10 @@ public:
 	wxButton* get_Clear(wxWindow* parent, cMain* evt);
 #pragma endregion
 
+#pragma region Button Tests
+	void test();
+#pragma endregion
+
 
 
 };
