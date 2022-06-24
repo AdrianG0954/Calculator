@@ -342,7 +342,50 @@ void Processor::onSingleClear(wxCommandEvent& evt, cMain* this2) {
 	evt.Skip();
 }
 
+void Processor::sin_btn(wxCommandEvent& evt, cMain* this2) {
+	this->cmain = this2;
 
+	if (cmain->Calc->GetLineLength(1) == 0)
+		return;
+
+	cmain->op1 = cmain->StringToDouble(cmain->Calc->GetValue());
+	cmain->result->AppendAndEnsureVisible("Sin" + cmain->Calc->GetValue());
+	cmain->res = sin(cmain->op1 * M_PI / 180);
+	cmain->op1 = cmain->res;
+	cmain->result->AppendAndEnsureVisible("Sin" + cmain->Calc->GetValue());
+	cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
+	cmain->ResetNumber();
+}
+
+void Processor::tan_btn(wxCommandEvent& evt, cMain* this2) {
+	this->cmain = this2;
+
+	if (cmain->Calc->GetLineLength(1) == 0)
+		return;
+
+	cmain->op1 = cmain->StringToDouble(cmain->Calc->GetValue());
+	cmain->result->AppendAndEnsureVisible("Sin" + cmain->Calc->GetValue());
+	cmain->res = tan(cmain->op1 * M_PI / 180);
+	cmain->op1 = cmain->res;
+	cmain->result->AppendAndEnsureVisible("Sin" + cmain->Calc->GetValue());
+	cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
+	cmain->ResetNumber();
+}
+
+void Processor::cos_btn(wxCommandEvent& evt, cMain* this2) {
+	this->cmain = this2;
+
+	if (cmain->Calc->GetLineLength(1) == 0)
+		return;
+
+	cmain->op1 = cmain->StringToDouble(cmain->Calc->GetValue());
+	cmain->result->AppendAndEnsureVisible("Sin" + cmain->Calc->GetValue());
+	cmain->res = cos(cmain->op1 * M_PI / 180);
+	cmain->op1 = cmain->res;
+	cmain->result->AppendAndEnsureVisible("Sin" + cmain->Calc->GetValue());
+	cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
+	cmain->ResetNumber();
+}
 
 
 #pragma endregion

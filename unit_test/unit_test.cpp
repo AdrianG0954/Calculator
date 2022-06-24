@@ -124,7 +124,7 @@ namespace UnitTests
 		}
 
 		TEST_METHOD(HEXADECIMALTEST3) {
-			string test = "0xF";
+			string test = "0xf";
 			string answer = Processor::TestGetHexadecimal(15);
 			Assert::AreEqual(answer, test);
 		}

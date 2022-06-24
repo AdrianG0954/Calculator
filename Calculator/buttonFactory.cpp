@@ -213,7 +213,8 @@ wxButton* buttonFactory::get_Pi(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Sin(wxWindow* parent, cMain* evt) {
-	sin = new wxButton(parent, 11, "Sin",
+	//the sin for degrees
+	sin = new wxButton(parent, 11, "Sin°",
 		wxPoint(35, 155), wxSize(60, 60));
 
 	sin->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -223,7 +224,8 @@ wxButton* buttonFactory::get_Sin(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Tan(wxWindow* parent, cMain* evt) {
-	tan = new wxButton(parent, 12, "Tan",
+	//the tan for degrees
+	tan = new wxButton(parent, 12, "Tan°",
 		wxPoint(35, 220), wxSize(60, 60));
 
 	tan->Bind(wxEVT_COMMAND_BUTTON_CLICKED,
@@ -253,7 +255,8 @@ wxButton* buttonFactory::get_Squared(wxWindow* parent, cMain* evt) {
 }
 
 wxButton* buttonFactory::get_Cos(wxWindow* parent, cMain* evt) {
-	cos = new wxButton(parent, 15, "Cos",
+	//the cos for degrees
+	cos = new wxButton(parent, 15, "Cos°",
 		wxPoint(100, 155), wxSize(60, 60));
 
 	cos->Bind(wxEVT_COMMAND_BUTTON_CLICKED,

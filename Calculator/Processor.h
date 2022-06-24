@@ -55,6 +55,12 @@ public:
 
 	void allClear(wxCommandEvent& evt, cMain* this2);
 
+	void sin_btn(wxCommandEvent& evt, cMain* this2);
+
+	void tan_btn(wxCommandEvent& evt, cMain* this2);
+
+	void cos_btn(wxCommandEvent& evt, cMain* this2);
+
 #pragma endregion
 
 #pragma region Binary dec and hex

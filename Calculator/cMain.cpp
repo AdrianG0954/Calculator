@@ -1,5 +1,6 @@
 ﻿#include "cMain.h"
 #include "buttonFactory.h"
+#include <math.h>
 wxBEGIN_EVENT_TABLE(cMain, wxFrame)
 
 wxEND_EVENT_TABLE()
@@ -256,15 +257,18 @@ void cMain::pie(wxCommandEvent& evt) {
 }
 
 void cMain::sin_Button(wxCommandEvent& evt) {
-	Calc->AppendText("Sin");
+	Processor* processor = Processor::GetInstance();
+	processor->sin_btn(evt, this);
 }
 
 void cMain::tan_Button(wxCommandEvent& evt) {
-	Calc->AppendText("Tan");
+	Processor* processor = Processor::GetInstance();
+	processor->tan_btn(evt, this);
 }
 
 void cMain::cos_Button(wxCommandEvent& evt) {
-	Calc->AppendText("Cos");
+	Processor* processor = Processor::GetInstance();
+	processor->cos_btn(evt, this);
 }
 
 void cMain::less_Than_btn(wxCommandEvent& evt) {
