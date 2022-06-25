@@ -156,9 +156,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Calculator\AddCommand.cpp" />
     <ClCompile Include="..\Calculator\buttonFactory.cpp" />
     <ClCompile Include="..\Calculator\cMain.cpp" />
+    <ClCompile Include="..\Calculator\DivCommand.cpp" />
     <ClCompile Include="..\Calculator\Processor.cpp" />
+    <ClCompile Include="..\Calculator\SubtractCommand.cpp" />
+    <ClCompile Include="..\Calculator\TimesCommand.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
