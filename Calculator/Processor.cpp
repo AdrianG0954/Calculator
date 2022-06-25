@@ -11,6 +11,7 @@ Processor* Processor::GetInstance() {
 	return _processor;
 }
 
+#pragma region Binary,hex, and dec
 void Processor::GetDecimal(wxCommandEvent& evt, cMain* this2) {
 
 	this->cmain = this2;
@@ -58,6 +59,7 @@ void Processor::GetBinary(wxCommandEvent& evt, cMain* this2) {
 
 	evt.Skip();
 }
+#pragma endregion
 
 #pragma region Operations
 
@@ -77,7 +79,14 @@ void Processor::onOperationDiv(wxCommandEvent& evt, cMain* this2) {
 	else if (cmain->DivisionFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = cmain->op1 / cmain->op2;
+
+		DivCommand Div(cmain->op1, cmain->op2);
+		commandVec.push_back((IBaseCommands*)&Div);
+		double ans = commandVec[0]->Execute();
+		commandVec.pop_back();
+		cmain->res = ans;
+
+		//cmain->res = cmain->op1 / cmain->op2;
 		cmain->op1 = cmain->res;
 		cmain->result->AppendAndEnsureVisible(" / " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
@@ -103,7 +112,14 @@ void Processor::onOperationTimes(wxCommandEvent& evt, cMain* this2) {
 	else if (cmain->MultiplyFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = cmain->op1 * cmain->op2;
+
+		TimesCommand times(cmain->op1, cmain->op2);
+		commandVec.push_back((IBaseCommands*)&times);
+		double ans = commandVec[0]->Execute();
+		commandVec.pop_back();
+		cmain->res = ans;
+
+		//cmain->res = cmain->op1 * cmain->op2;
 		cmain->op1 = cmain->res;
 		cmain->result->AppendAndEnsureVisible(" * " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
@@ -129,7 +145,14 @@ void Processor::OnOperationMinus(wxCommandEvent& evt, cMain* this2) {
 	else if (cmain->SubtractionFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = cmain->op1 - cmain->op2;
+
+		SubtractCommand sub(cmain->op1, cmain->op2);
+		commandVec.push_back((IBaseCommands*)&sub);
+		double ans = commandVec[0]->Execute();
+		commandVec.pop_back();
+		cmain->res = ans;
+
+		//cmain->res = cmain->op1 - cmain->op2;
 		cmain->op1 = cmain->res;
 		cmain->result->AppendAndEnsureVisible(" - " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
@@ -139,6 +162,8 @@ void Processor::OnOperationMinus(wxCommandEvent& evt, cMain* this2) {
 }
 
 void Processor::OnOperationPlus(wxCommandEvent& evt, cMain* this2) {
+	double one = 0, two = 0;
+	
 	this->cmain = this2;
 
 	if (cmain->Calc->GetLineLength(1) == 0)
@@ -154,7 +179,14 @@ void Processor::OnOperationPlus(wxCommandEvent& evt, cMain* this2) {
 	else if (cmain->AdditionFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = cmain->op1 + cmain->op2;
+
+		AddCommand add(cmain->op1, cmain->op2);
+		commandVec.push_back((IBaseCommands*)&add);
+		double ans = commandVec[0]->Execute();
+		commandVec.pop_back();
+		cmain->res = ans;
+
+		//cmain->res = cmain->op1 + cmain->op2;
 		cmain->op1 = cmain->res;
 		cmain->result->AppendAndEnsureVisible(" + " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
@@ -172,7 +204,14 @@ void Processor::onOperationEquals(wxCommandEvent& evt, cMain* this2) {
 	if (cmain->AdditionFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = cmain->op1 + cmain->op2;
+
+		AddCommand add2(cmain->op1, cmain->op2);
+		commandVec.push_back((IBaseCommands*)&add2);
+		double ans = commandVec[0]->Execute();
+		commandVec.pop_back();
+		cmain->res = ans;
+
+		//cmain->res = cmain->op1 + cmain->op2;
 		cmain->result->AppendAndEnsureVisible(" + " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
 		cmain->ResetFlags();
@@ -181,7 +220,14 @@ void Processor::onOperationEquals(wxCommandEvent& evt, cMain* this2) {
 	else if (cmain->MultiplyFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = cmain->op1 * cmain->op2;
+
+		TimesCommand times2(cmain->op1, cmain->op2);
+		commandVec.push_back((IBaseCommands*)&times2);
+		double ans4 = commandVec[0]->Execute();
+		commandVec.pop_back();
+		cmain->res = ans4;
+
+		//cmain->res = cmain->op1 * cmain->op2;
 		cmain->result->AppendAndEnsureVisible(" * " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
 		cmain->ResetFlags();
@@ -190,7 +236,14 @@ void Processor::onOperationEquals(wxCommandEvent& evt, cMain* this2) {
 	else if (cmain->DivisionFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = cmain->op1 / cmain->op2;
+
+		DivCommand Div2(cmain->op1, cmain->op2);
+		commandVec.push_back((IBaseCommands*)&Div2);
+		double ans3 = commandVec[0]->Execute();
+		commandVec.pop_back();
+		cmain->res = ans3;
+
+		//cmain->res = cmain->op1 / cmain->op2;
 		cmain->result->AppendAndEnsureVisible(" / " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
 		cmain->ResetFlags();
@@ -199,7 +252,14 @@ void Processor::onOperationEquals(wxCommandEvent& evt, cMain* this2) {
 	else if (cmain->SubtractionFlag)
 	{
 		cmain->op2 = cmain->StringToDouble(cmain->Calc->GetValue());
-		cmain->res = cmain->op1 - cmain->op2;
+
+		SubtractCommand sub2(cmain->op1, cmain->op2);
+		commandVec.push_back((IBaseCommands*)&sub2);
+		double ans2 = commandVec[0]->Execute();
+		commandVec.pop_back();
+		cmain->res = ans2;
+
+		//cmain->res = cmain->op1 - cmain->op2;
 		cmain->result->AppendAndEnsureVisible(" - " + cmain->Calc->GetValue());
 		cmain->result->AppendAndEnsureVisible(" = " + cmain->DoubleToString(cmain->res));
 		cmain->ResetFlags();

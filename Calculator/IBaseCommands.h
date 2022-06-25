@@ -2,7 +2,7 @@
 class IBaseCommands
 {
 public:
-	virtual void Execute() = 0;
+	virtual double Execute() = 0;
 
 };
 
