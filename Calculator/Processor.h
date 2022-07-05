@@ -5,11 +5,6 @@
 #include <queue>
 #include "wx/wx.h"
 #include "cMain.h"
-#include "IBaseCommands.h"
-#include "AddCommand.h"
-#include "SubtractCommand.h"
-#include "DivCommand.h"
-#include "TimesCommand.h"
 
 using namespace std;
 
@@ -19,7 +14,6 @@ class cMain;
 class Processor {
 
 public:
-	vector<IBaseCommands*> commandVec;
 	cMain* cmain;
 private:
 	static Processor* _processor;
