@@ -17,7 +17,6 @@ public:
 	cMain* cmain;
 private:
 	static Processor* _processor;
-	int baseNum;
 	Processor() {}
 public:
 	static Processor* GetInstance();
