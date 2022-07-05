@@ -25,7 +25,6 @@ public:
 	Processor(Processor& other) = delete;
 
 	void operator=(const Processor& _assign) = delete;
-
 #pragma region Operations
 
 	void OnOperationPlus(wxCommandEvent& evt, cMain* this2);
@@ -70,19 +69,6 @@ public:
 
 #pragma endregion
 
-#pragma region Unit test Functions
-	static int TestOnOperationPlus(int op1,int op2);
-
-	static int TestOnOperationMinus(int op1, int op2);
-
-	static int TestonOperationTimes(int op1, int op2);
-
-	static int TestonOperationDiv(int op1, int op2);
-
-	static string TestGetBinary(int op1);
-
-	static string TestGetHexadecimal(int op1);
-#pragma endregion
 
 };
 
